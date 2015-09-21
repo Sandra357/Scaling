@@ -1,0 +1,34 @@
+all: clean scaling ./scaling
+
+scaling: main.o read_list.o read_picture.o write_picture.o double_scaling.o bilining_interpolation.o decrease.o compare.o write_log_file.o
+	g++ main.o read_list.o read_picture.o write_picture.o double_scaling.o bilining_interpolation.o decrease.o compare.o write_log_file.o -o scaling
+
+main.o: main.cpp
+	g++ -c main.cpp
+
+read_list.o: read_list.cpp
+	g++ -c read_list.cpp
+
+read_picture.o: read_picture.cpp
+	g++ -c read_picture.cpp
+
+write_picture.o: write_picture.cpp
+	g++ -c write_picture.cpp
+
+double_scaling.o: double_scaling.cpp
+	g++ -c double_scaling.cpp
+
+bilining_interpolation.o: bilining_interpolation.cpp
+	g++ -c bilining_interpolation.cpp
+
+decrease.o: decrease.cpp
+	g++ -c decrease.cpp
+
+compare.o: compare.cpp
+	g++ -c compare.cpp
+
+write_log_file.o: write_log_file.cpp
+	g++ -c write_log_file.cpp
+
+clean:
+	rm -rf *.o scaling
